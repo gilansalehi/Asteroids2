@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Asteroids</title>
+    <style>
+      html, body, canvas {
+        padding: 0px;
+        margin: 0px;
+      }
+      canvas {
+        background-color: black;
+        background-image: url(http://www.wallpaperhi.com/thumbnails/detail/20120918/outer%20space%20lights%20stars%20bright%201600x1200%20wallpaper_www.wallpaperhi.com_29.jpg);
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="game-canvas" width="800" height="600"></canvas>
+
+    <script src="keymaster-master/keymaster.js"></script>
+    <script src="vMath.js"></script>
+    <script src="utils.js"></script>
+    <script src="game.js"></script>
+    <script src="movingObject.js"></script>
+    <script src="text.js"></script>
+    <script src="hud.js"></script>
+    <script src="asteroid.js"></script>
+    <script src="bullet.js"></script>
+    <script src="ship.js"></script>
+    <script src="gameView.js"></script>
+    <script src="enemyFighter.js"></script>
+    <script src="enemyBullet.js"></script>
+
+    <script>
+      var game = new Asteroids.Game();
+      var canvasEl = document.getElementById("game-canvas");
+      var ctx = canvasEl.getContext("2d");
+      new Asteroids.GameView(
+        game,
+        ctx
+      ).start(canvasEl);
+    </script>
+  </body>
+
+</html>
