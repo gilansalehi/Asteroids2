@@ -59,7 +59,7 @@
         text: "-" + Math.floor(this.radius),
         pos: otherObject.pos,
         game: this.game,
-      }); // add in floating text to represent damage
+      });
     } else if (this.radius > otherObject.radius) {
       this.game.destroy(otherObject);
       this.hp -= otherObject.radius;

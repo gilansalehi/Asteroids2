@@ -13,7 +13,11 @@
     if(key.isPressed("down")) { window.game.ship.power([0, 1]); }
     if(key.isPressed("left")) { window.game.ship.power([-1, 0]); }
     if(key.isPressed("right")) { window.game.ship.power([1, 0]); }
-    if(key.isPressed("space")) { window.game.ship.fireBullet(); };
+    if(key.isPressed("space")) { window.game.ship.fireBullet(); }
+    if(key.isPressed("z")) { console.log("fire missile"); }
+    if(key.isPressed("x")) { console.log(window.game.ship.hp); }
+    if(key.isPressed("c")) { console.log(window.game.movingObjects.length); }
+
   };
 
   GameView.prototype.start = function (canvasEl) {
