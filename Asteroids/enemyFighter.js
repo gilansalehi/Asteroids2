@@ -11,7 +11,7 @@
     this.color = "#ffa500";
     this.game = attrs.game;
     this.cooldown = 0;
-    this.hp = 50
+    this.hp = 15;
   };
 
   Asteroids.Util.inherits(Fighter, Asteroids.MovingObject);
@@ -32,19 +32,18 @@
     this.vel[1] += impulse[1];
 
     var speedlimit = 3;
-    if (this.vel[0] > speedlimit) { this.vel[0] = speedlimit }
-    if (this.vel[0] < - speedlimit) { this.vel[0] = -speedlimit }
-    if (this.vel[1] > speedlimit) { this.vel[1] = speedlimit }
-    if (this.vel[1] < - speedlimit) { this.vel[1] = -speedlimit }
+    if (this.vel[0] > speedlimit) { this.vel[0] = speedlimit; }
+    if (this.vel[0] < - speedlimit) { this.vel[0] = -speedlimit; }
+    if (this.vel[1] > speedlimit) { this.vel[1] = speedlimit; }
+    if (this.vel[1] < - speedlimit) { this.vel[1] = -speedlimit; }
   };
 
   Fighter.prototype.fireBullet = function () {
     if (this.cooldown < 0) {
       this.cooldown = 60;
-      console.log("enemy fires!");
 
       var targetDir = vMath.normalize(vMath.subt(this.game.ship.pos, this.pos));
-      var bulletDiff = vMath.mult(targetDir, 30)
+      var bulletDiff = vMath.mult(targetDir, 30);
       var spawnPos = vMath.add(this.pos, bulletDiff);
 
       var bullet = new Asteroids.EnemyBullet({

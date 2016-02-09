@@ -19,7 +19,7 @@
   };
 
   vMath.div = function (vec1, x) {
-    if (x === 0) return { vec1 }
+    if (x === 0) return vec1;
     return [vec1[0] / x, vec1[1] / x];
   };
 

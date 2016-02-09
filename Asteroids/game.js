@@ -47,7 +47,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
   Game.prototype.addText = function (attrs) {
     var text = new Asteroids.Text (attrs);
     this.textObjects.push(text);
-  }
+  };
 
   Game.prototype.allObjects = function () {
     return this.movingObjects.concat(this.ship);
@@ -62,15 +62,13 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     });
     this.textObjects.forEach(function (text) {
       text.draw(ctx);
-    })
+    });
   };
 
   Game.prototype.moveObjects = function () {
-    // debugger;
     this.allObjects().forEach(function (object) {
       object.move();
     });
-
   };
 
   Game.prototype.updateTextObjects = function () {
@@ -81,8 +79,8 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
 
   Game.prototype.cleanUp = function () {
     this.movingObjects.forEach(function (object) {
-      if (Asteroids.Util.offScreen(object)) {this.remove(object)}
-    }.bind(this))
+      if (Asteroids.Util.offScreen(object)) { this.remove(object); }
+    }.bind(this));
   };
 
   Game.prototype.bounds = function (pos) {
@@ -155,7 +153,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       this.spawn();
       this.spawnCounter = 50;
     }
-  }
+  };
 
   Game.prototype.randPosition = function () {
     var xPos = Math.random() * DIM_X;
@@ -164,8 +162,8 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
   };
 
   Game.prototype.spawn = function (spawn) {
-    var spawn = spawn || Asteroids.Util.spawnRand(this.score);
-    switch (spawn) {
+    var newSpawn = spawn || Asteroids.Util.spawnRand(this.score);
+    switch (newSpawn) {
       case "asteroid":
         var asteroid = new Asteroids.Asteroid({pos: this.randPosition(), game: this});
         this.movingObjects.push(asteroid);
@@ -173,10 +171,10 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       case "fighter":
         var fighter = new Asteroids.Fighter({pos: this.randPosition(), game: this});
         this.movingObjects.push(fighter);
-        console.log("a fighter has spawned!");
+        break;
       default:
         console.log("got default");
     }
-  }
+  };
 
 })();

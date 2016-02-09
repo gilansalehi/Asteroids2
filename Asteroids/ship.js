@@ -1,4 +1,3 @@
-
 (function () {
   if (typeof Asteroids === "undefined") {
     window.Asteroids = {};
@@ -24,10 +23,10 @@
     this.vel[1] += impulse[1];
 
     var speedlimit = 5;
-    if (this.vel[0] > speedlimit) { this.vel[0] = speedlimit }
-    if (this.vel[0] < - speedlimit) { this.vel[0] = -speedlimit }
-    if (this.vel[1] > speedlimit) { this.vel[1] = speedlimit }
-    if (this.vel[1] < - speedlimit) { this.vel[1] = -speedlimit }
+    if (this.vel[0] > speedlimit) { this.vel[0] = speedlimit; }
+    if (this.vel[0] < - speedlimit) { this.vel[0] = -speedlimit; }
+    if (this.vel[1] > speedlimit) { this.vel[1] = speedlimit; }
+    if (this.vel[1] < - speedlimit) { this.vel[1] = -speedlimit; }
   };
 
   Ship.prototype.fireBullet = function () {
@@ -36,8 +35,6 @@
       var bulletPos = [this.pos[0], this.pos[1] - 25];
       var bullet = new Asteroids.Bullet({pos: bulletPos, game: this.game});
       this.game.movingObjects.push(bullet);
-      console.log(this.hp)
-      console.log(this.game.score)
     }
   };
 
