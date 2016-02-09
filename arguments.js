@@ -6,17 +6,6 @@ function sum () {
   return partSum;
 }
 
-// function myBind (context) {
-//   var fn = this;
-//   var bindArgs = [].slice.call(arguments, 1);
-//
-//   var myFunction = function () {
-//     var callArgs = [].slice.call(arguments);
-//     return fn.apply(context, bindArgs.concat(callArgs));
-//   };
-//
-//   return myFunction;
-// }
 Function.prototype.myBind = function (context) {
   var fn = this;
   var bindArgs = [].slice.call(arguments, 1);

@@ -44,6 +44,8 @@
         return "asteroid";
       case (rand < 100):
         return "fighter";
+      case (rand < 500):
+        return "frigate";
       default:
         return "fighter";
     }

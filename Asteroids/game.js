@@ -172,6 +172,9 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         var fighter = new Asteroids.Fighter({pos: this.randPosition(), game: this});
         this.movingObjects.push(fighter);
         break;
+      case "frigate":
+        var frigate = new Asteroids.Frigate({pos: this.randPosition(), game: this});
+        break;
       default:
         console.log("got default");
     }

@@ -3,20 +3,21 @@
     window.Asteroids = {};
   }
 
-  var Fighter = Asteroids.Fighter = function (attrs) {
-    this.type = "fighter";
+  var Frigate = Asteroids.Frigate = function (attrs) {
+    this.type = "frigate";
     this.pos = attrs.pos;
-    this.vel = attrs.vel || [0, 0];
-    this.radius = 20;
-    this.color = "#ffa500";
+    this.vel = [0, 0];
+    this.radius = 40;
+    this.color = "#ffbb00";
     this.game = attrs.game;
-    this.cooldown = 0;
-    this.hp = 15;
+    this.cooldownDeploy = 240;
+    this.cooldownFire = 60;
+    this.hp = 55;
   };
 
-  Asteroids.Util.inherits(Fighter, Asteroids.MovingObject);
+  Asteroids.Util.inherits(Frigate, Asteroids.MovingObject);
 
-  Fighter.prototype.power = function () {
+  Frigate.prototype.power = function () {
     // debugger;
     var impulse = [0, 0];
     var enemyPos = this.game.ship.pos;
@@ -38,9 +39,27 @@
     if (this.vel[1] < - speedlimit) { this.vel[1] = -speedlimit; }
   };
 
-  Fighter.prototype.fireBullet = function () {
-    if (this.cooldown < 0) {
-      this.cooldown = 60;
+  Frigate.prototype.deployFighter = function () {
+    if (this.cooldownDeploy < 0) {
+      this.cooldownDeploy = 120;
+
+      var targetDir = vMath.normalize(vMath.subt(this.game.ship.pos, this.pos));
+      var spawnDiff = vMath.mult(targetDir, 60);
+      var spawnPos = vMath.add(this.pos, spawnPos);
+
+      var fighter = new Asteroids.Fighter({
+        pos: spawnPos,
+        vel: vMath.mult(targetDir, 2),
+        game: this.game,
+      });
+
+      this.game.movingObjects.push(fighter);
+    }
+  };
+
+  Frigate.prototype.fireBullet = function () {
+    if (this.cooldownFire < 0) {
+      this.cooldownFire = 60;
 
       var targetDir = vMath.normalize(vMath.subt(this.game.ship.pos, this.pos));
       var bulletDiff = vMath.mult(targetDir, 30);
@@ -56,7 +75,7 @@
     }
   };
 
-  Fighter.prototype.move = function () {
+  Frigate.prototype.move = function () {
     this.power();
     this.fireBullet();
 
@@ -69,7 +88,8 @@
     var posX = origX + dx;
     var posY = origY + dy;
 
-    this.cooldown -= 1;
+    this.cooldownDeploy -= 1;
+    this.cooldownFire -= 1;
     this.pos = [posX, posY];
   };
 
