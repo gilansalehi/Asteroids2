@@ -15,7 +15,6 @@
     this.timeout = attrs.timeout || 20;
     this.drift = attrs.drift || [0.1, -0.1];
     this.game = attrs.game;
-    console.log("text loaded");
   };
 
   Text.prototype.draw = function (ctx) {
@@ -28,7 +27,7 @@
   Text.prototype.update = function () {
     // this.text = "SCORE: " + this.game.score;
     this.age += 1;
-    this.pos = vMath.add(this.pos, this.drift)
+    this.pos = vMath.add(this.pos, this.drift);
     if (this.age > this.timeout) { this.game.removeText(this); }
   };
 

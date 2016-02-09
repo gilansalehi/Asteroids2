@@ -54,7 +54,7 @@
     } else if (this.radius < otherObject.radius) {
       this.game.destroy(this);
       otherObject.hp -= this.radius;
-      if (otherObject.hp < 0) {this.game.destroy(otherObject)}
+      if (otherObject.hp < 0) { this.game.destroy(otherObject); }
       this.game.addText({
         text: "-" + Math.floor(this.radius),
         pos: otherObject.pos,
@@ -63,7 +63,7 @@
     } else if (this.radius > otherObject.radius) {
       this.game.destroy(otherObject);
       this.hp -= otherObject.radius;
-      if (this.hp < 0) {this.game.destroy(this)}
+      if (this.hp < 0) { this.game.destroy(this); }
       this.game.addText({
         text: "-" + Math.floor(otherObject.radius),
         pos: this.pos,
