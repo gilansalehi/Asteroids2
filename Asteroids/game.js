@@ -24,12 +24,26 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
 
     this.spawnCounter = 0;
     this.score = 0;
+    this.pause = false;
 
+    this.start();
+  };
+
+  Game.prototype.start = function () {
+    this.addText({text: "Gauntlet Run", size: 60, pos: [200, 200] });
+    this.addText({
+      text: "Use arrow keys to move, hold space to fire",
+      pos: [200, 250],
+    });
+    this.addText({
+      text: "Press P to pause and O to begin!",
+      pos: [200, 300],
+    });
     this.textObjects.push(this.addScore());
-    // this.movingObjects.push(this.ship);
     for (var i = 0; i < NUM_ASTEROIDS; i++) {
       this.movingObjects.push(this.addAsteroids());
     }
+    this.pause = true;
   };
 
   Game.prototype.addAsteroids = function () {
@@ -45,6 +59,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
   };
 
   Game.prototype.addText = function (attrs) {
+    attrs.game = this;
     var text = new Asteroids.Text (attrs);
     this.textObjects.push(text);
   };
@@ -108,18 +123,23 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
   };
 
   Game.prototype.step = function () {
-    this.score += 1;
-    this.spawnObjects();
-    this.updateTextObjects();
-    this.moveObjects();
-    this.checkCollisions();
-    this.cleanUp();
+    if (!this.pause) {
+      this.spawnObjects();
+      this.updateTextObjects();
+      this.moveObjects();
+      this.checkCollisions();
+      this.cleanUp();
+    }
+  };
+
+  Game.prototype.togglePause = function () {
+    this.pause = !this.pause;
   };
 
   Game.prototype.remove = function (object) {
-    if (object.type === "ship") {
+    if (object.type === "ship") { // && Game isn't already over
       this.addText({
-        text: "GAME OVER",
+        text: "GAME OVER, score: " + this.score,
         pos: [this.dim_x / 2, this.dim_y / 2],
         size: 60,
         timeout: 200,

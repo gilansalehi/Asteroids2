@@ -13,7 +13,7 @@
     this.textAlign = attrs.textAlign || "left";
     this.age = 0;
     this.timeout = attrs.timeout || 20;
-    this.drift = attrs.drift || [0.1, -0.1];
+    this.drift = attrs.drift || [0, 0];
     this.game = attrs.game;
   };
 

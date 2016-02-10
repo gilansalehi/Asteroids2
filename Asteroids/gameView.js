@@ -17,7 +17,8 @@
     if(key.isPressed("z")) { console.log("fire missile"); }
     if(key.isPressed("x")) { console.log(window.game.ship.hp); }
     if(key.isPressed("c")) { console.log(window.game.movingObjects.length); }
-
+    if(key.isPressed("p")) { window.game.pause = true; }
+    if(key.isPressed("o")) { window.game.pause = false; }
   };
 
   GameView.prototype.start = function (canvasEl) {
