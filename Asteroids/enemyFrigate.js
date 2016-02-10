@@ -7,7 +7,7 @@
     this.type = "frigate";
     this.pos = attrs.pos;
     this.vel = [0, 0];
-    this.radius = 40;
+    this.radius = 35;
     this.color = "#ffbb00";
     this.game = attrs.game;
     this.cooldownDeploy = 240;
@@ -32,7 +32,7 @@
     this.vel[0] += impulse[0];
     this.vel[1] += impulse[1];
 
-    var speedlimit = 3;
+    var speedlimit = 1;
     if (this.vel[0] > speedlimit) { this.vel[0] = speedlimit; }
     if (this.vel[0] < - speedlimit) { this.vel[0] = -speedlimit; }
     if (this.vel[1] > speedlimit) { this.vel[1] = speedlimit; }
@@ -44,13 +44,13 @@
       this.cooldownDeploy = 120;
 
       var targetDir = vMath.normalize(vMath.subt(this.game.ship.pos, this.pos));
-      var spawnDiff = vMath.mult(targetDir, 60);
-      var spawnPos = vMath.add(this.pos, spawnPos);
+      var spawnDiff = vMath.mult(targetDir, 70);
+      var spawnPos = vMath.add(this.pos, spawnDiff);
 
       var fighter = new Asteroids.Fighter({
         pos: spawnPos,
         vel: vMath.mult(targetDir, 2),
-        game: this.game,
+        game: this.game
       });
 
       this.game.movingObjects.push(fighter);
@@ -62,7 +62,7 @@
       this.cooldownFire = 60;
 
       var targetDir = vMath.normalize(vMath.subt(this.game.ship.pos, this.pos));
-      var bulletDiff = vMath.mult(targetDir, 30);
+      var bulletDiff = vMath.mult(targetDir, 50);
       var spawnPos = vMath.add(this.pos, bulletDiff);
 
       var bullet = new Asteroids.EnemyBullet({
@@ -78,6 +78,7 @@
   Frigate.prototype.move = function () {
     this.power();
     this.fireBullet();
+    this.deployFighter();
 
     var origX = this.pos[0];
     var origY = this.pos[1];

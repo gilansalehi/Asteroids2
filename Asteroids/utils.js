@@ -32,7 +32,7 @@
   Util.offScreen = function (obj) {
     if (obj.pos[0] < 0 || obj.pos[0] > 800) // Asteroids.Game.DIM_X)
       { return true; }
-    if (obj.pos[1] < 0 || obj.pos[1] > 600) // Asteroids.Game.DIM_Y)
+    if (obj.pos[1] < 0 || obj.pos[1] > 700) // Asteroids.Game.DIM_Y)
       { return true; }
     return false;
   };

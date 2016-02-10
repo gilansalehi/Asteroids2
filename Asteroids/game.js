@@ -174,6 +174,8 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         break;
       case "frigate":
         var frigate = new Asteroids.Frigate({pos: this.randPosition(), game: this});
+        this.movingObjects.push(frigate);
+        console.log("Got frigate");
         break;
       default:
         console.log("got default");
