@@ -51,27 +51,29 @@
     if (this.type === "asteroid" && otherObject.type === "asteroid") {
         this.decompose();
         otherObject.decompose();
-    } else if (this.radius < otherObject.radius) {
-      this.game.destroy(this);
-      otherObject.hp -= this.radius;
-      if (otherObject.hp < 0) { this.game.destroy(otherObject); }
-      this.game.addText({
-        text: "-" + Math.floor(this.radius),
-        pos: otherObject.pos,
-        game: this.game,
-      });
-    } else if (this.radius > otherObject.radius) {
-      this.game.destroy(otherObject);
-      this.hp -= otherObject.radius;
-      if (this.hp < 0) { this.game.destroy(this); }
-      this.game.addText({
-        text: "-" + Math.floor(otherObject.radius),
-        pos: this.pos,
-        game: this.game,
-      });
     } else {
-      this.game.destroy(this);
-      this.game.destroy(otherObject);
+      this.hp -= otherObject.dmg;
+      otherObject.hp -= this.dmg;
+      if (this.hp < 0 || this.radius <= otherObject.radius ) {
+        this.game.destroy(this);
+      }
+      if (otherObject.hp < 0 || otherObject.radius <= this.radius) {
+        this.game.destroy(otherObject);
+      }
+      if (this.type === "bullet") {
+        this.game.addText({
+          text: "-" + Math.floor(this.dmg),
+          pos: otherObject.pos,
+          drift: [0.1, -0.1]
+        });
+      }
+      if (otherObject.type === "bullet") {
+        this.game.addText({
+          text: "-" + Math.floor(otherObject.dmg),
+          pos: this.pos,
+          drift: [0.1, -0.1]
+        });
+      }    
     }
   };
 

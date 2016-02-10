@@ -6,12 +6,14 @@
 
   var Asteroid = Asteroids.Asteroid = function (attr) {
     this.type = "asteroid";
+    this.team = "neutral";
     this.pos = attr.pos;
     this.radius = attr.radius || (40 + Math.random() * 20);
     this.vel = attr.vel || vMath.rand(10 / this.radius);
     this.color = "#808080";
     this.game = attr.game;
     this.hp = this.radius * this.radius;
+    this.dmg = this.radius;
   };
 
   Asteroids.Util.inherits(Asteroid, Asteroids.MovingObject);

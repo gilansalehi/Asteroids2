@@ -5,6 +5,8 @@
 
   var Frigate = Asteroids.Frigate = function (attrs) {
     this.type = "frigate";
+    this.team = "enemy";
+    this.points = 100;
     this.pos = attrs.pos;
     this.vel = [0, 0];
     this.radius = 35;
@@ -13,6 +15,7 @@
     this.cooldownDeploy = 240;
     this.cooldownFire = 60;
     this.hp = 55;
+    this.dmg = this.radius;
   };
 
   Asteroids.Util.inherits(Frigate, Asteroids.MovingObject);

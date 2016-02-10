@@ -5,6 +5,8 @@
 
   var Fighter = Asteroids.Fighter = function (attrs) {
     this.type = "fighter";
+    this.team = "enemy";
+    this.points = 10;
     this.pos = attrs.pos;
     this.vel = attrs.vel || [0, 0];
     this.radius = 20;
@@ -12,6 +14,7 @@
     this.game = attrs.game;
     this.cooldown = 0;
     this.hp = 15;
+    this.dmg = 100;
   };
 
   Asteroids.Util.inherits(Fighter, Asteroids.MovingObject);

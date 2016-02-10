@@ -137,7 +137,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
   };
 
   Game.prototype.remove = function (object) {
-    if (object.type === "ship") { // && Game isn't already over
+    if (object.type === "ship" && this.score !== 0) { // && Game isn't already over
       this.addText({
         text: "GAME OVER, score: " + this.score,
         pos: [this.dim_x / 2, this.dim_y / 2],
@@ -148,6 +148,8 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         game: this
       });
       this.score = 0;
+      this.ship.hp = 100;
+      this.pause = true;
     }
     // use splice to delete elements at index i...
     var i = this.movingObjects.indexOf(object);
@@ -164,6 +166,9 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       object.decompose();
     } else {
       this.remove(object);
+      if (object.points) {
+        this.score += Math.floor(object.points);
+      }
     }
   };
 
