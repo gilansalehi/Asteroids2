@@ -39,6 +39,11 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       text: "Press P to pause and O to begin!",
       pos: [200, 300],
     });
+    this.reset();
+  };
+
+  Game.prototype.reset = function () {
+    this.movingObjects = [];
     this.textObjects.push(this.addScore());
     for (var i = 0; i < NUM_ASTEROIDS; i++) {
       this.movingObjects.push(this.addAsteroids());
@@ -118,6 +123,18 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         if (firstObject.isCollidedWith(secondObject)) {
           firstObject.collideWith(secondObject);
         }
+        if (firstObject.viewDist) {
+          if (firstObject.viewDist > (Asteroids.Util
+            .dist(firstObject.pos, secondObject.pos) - secondObject.radius)) {
+              firstObject.reactTo(secondObject);
+          }
+        }
+        if (secondObject.viewDist) {
+          if (secondObject.viewDist > (Asteroids.Util
+            .dist(firstObject.pos, secondObject.pos) - firstObject.radius)) {
+              secondObject.reactTo(firstObject);
+          }
+        }
       }
     }
   };
@@ -148,8 +165,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         game: this
       });
       this.score = 0;
-      this.ship.hp = 100;
-      this.pause = true;
+      this.reset();
     }
     // use splice to delete elements at index i...
     var i = this.movingObjects.indexOf(object);

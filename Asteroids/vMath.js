@@ -30,8 +30,13 @@
     return [(randX * length), (randY * length)];
   };
 
-  vMath.normalize = function (vector) {
+  vMath.length = function (vector) {
     var length = Math.sqrt(Math.pow(vector[0], 2) + Math.pow(vector[1], 2));
+    return length;
+  };
+
+  vMath.normalize = function (vector) {
+    var length = vMath.length(vector);
     return vMath.div(vector, length);
   };
 })();

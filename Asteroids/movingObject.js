@@ -37,7 +37,7 @@
 
     var posX = origX + dx;
     var posY = origY + dy + 1; // +1 gives the game vertical drift
-    // debugger;
+
     this.pos = [posX, posY];
   };
 
@@ -73,7 +73,7 @@
           pos: this.pos,
           drift: [0.1, -0.1]
         });
-      }    
+      }
     }
   };
 

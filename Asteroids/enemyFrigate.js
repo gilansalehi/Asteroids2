@@ -16,6 +16,7 @@
     this.cooldownFire = 60;
     this.hp = 55;
     this.dmg = this.radius;
+    this.viewDist = 100;
   };
 
   Asteroids.Util.inherits(Frigate, Asteroids.MovingObject);
@@ -25,7 +26,7 @@
     var impulse = [0, 0];
     var enemyPos = this.game.ship.pos;
 
-    var targetPos = vMath.div(vMath.add(this.pos, enemyPos), 2);
+    var targetPos = enemyPos;
     // var goTo = Asteroids.Util.vMathDiv(Asteroids.Util.vMathAdd(this.pos, targetPos), 2));
 
     // tracks players ship
@@ -40,6 +41,10 @@
     if (this.vel[0] < - speedlimit) { this.vel[0] = -speedlimit; }
     if (this.vel[1] > speedlimit) { this.vel[1] = speedlimit; }
     if (this.vel[1] < - speedlimit) { this.vel[1] = -speedlimit; }
+  };
+
+  Frigate.prototype.reactTo = function (obj) {
+    console.log("Ahhhh a " + obj.type + "!");
   };
 
   Frigate.prototype.deployFighter = function () {
