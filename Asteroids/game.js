@@ -222,6 +222,9 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
   Game.prototype.destroy = function (object) {
     if (object.type === "asteroid") {
       object.decompose();
+    } else if (object.team === "powerup") {
+      object.acquire();
+      this.remove(object);
     } else {
       this.remove(object);
       if (object.points) {
@@ -254,6 +257,10 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       case "fighter":
         var fighter = new Asteroids.Fighter({pos: this.randPosition(), game: this});
         this.movingObjects.push(fighter);
+        break;
+      case "powerup":
+        var powerup = new Asteroids.PowerUp({pos: this.randPosition(), game: this});
+        this.movingObjects.push(powerup);
         break;
       case "frigate":
         var frigate = new Asteroids.Frigate({pos: this.randPosition(), game: this});
