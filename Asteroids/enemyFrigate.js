@@ -44,7 +44,9 @@
   };
 
   Frigate.prototype.reactTo = function (obj) {
-    console.log("Ahhhh a " + obj.type + "!");
+    if (this.radius <= obj.radius) {
+      console.log("Ahhhh a big " + obj.type + "!");
+    }
   };
 
   Frigate.prototype.deployFighter = function () {
