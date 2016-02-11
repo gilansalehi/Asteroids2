@@ -42,7 +42,7 @@
     switch (true) {
       case (rand < 75):
         return "asteroid";
-      case (rand < 150):
+      case (rand < 110):
         return "fighter";
       case (rand < 500):
         return "frigate";

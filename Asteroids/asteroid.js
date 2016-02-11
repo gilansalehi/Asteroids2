@@ -5,6 +5,8 @@
   }
 
   var Asteroid = Asteroids.Asteroid = function (attr) {
+    this.img = new Image ();
+    this.img.src = './assets/asteroid.png';
     this.type = "asteroid";
     this.team = "neutral";
     this.pos = attr.pos;
@@ -45,6 +47,16 @@
     } else {
       this.game.remove(this);
     }
+  };
+
+  Asteroid.prototype.draw = function () {
+    ctx.drawImage(
+      this.img,
+      this.pos[0] - this.radius,
+      this.pos[1] - this.radius,
+      this.radius * 2,
+      this.radius * 2
+    );
   };
 
 })();

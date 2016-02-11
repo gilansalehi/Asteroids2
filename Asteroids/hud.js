@@ -20,7 +20,7 @@
 
   HUD.prototype.update = function () {
     // this.text = "SCORE: " + this.game.score;
-    this.text = "SCORE: " + this.game.score;
+    this.text = "SCORE: " + this.game.score + "   HP: " + Math.floor(this.game.ship.hp);
   };
 
 })();

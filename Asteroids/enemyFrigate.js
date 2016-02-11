@@ -4,6 +4,8 @@
   }
 
   var Frigate = Asteroids.Frigate = function (attrs) {
+    this.img = new Image ();
+    this.img.src = './assets/alien1.png';
     this.type = "frigate";
     this.team = "enemy";
     this.points = 100;
@@ -112,6 +114,10 @@
     this.cooldownDeploy -= 1;
     this.cooldownFire -= 1;
     this.pos = [posX, posY];
+  };
+
+  Frigate.prototype.draw = function () {
+    ctx.drawImage(this.img, this.pos[0] - 35, this.pos[1] - 35, 70, 90);
   };
 
 })();
