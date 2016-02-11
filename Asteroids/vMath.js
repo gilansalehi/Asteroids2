@@ -10,17 +10,34 @@
     return [vec1[0] + vec2[0], vec1[1] + vec2[1]];
   };
 
+  Array.prototype.plus = function (vec) {
+    return [this[0] + vec[0], this[1] + vec[1]];
+  };
+
   vMath.subt = function (vec1, vec2) {
     return [vec1[0] - vec2[0], vec1[1] - vec2[1]];
+  };
+
+  Array.prototype.minus = function (vec) {
+    return [this[0] - vec[0], this[1] - vec[1]];
   };
 
   vMath.mult = function (vec1, x) {
     return [vec1[0] * x, vec1[1] * x];
   };
 
+  Array.prototype.times = function (x) {
+    return [this[0] * x, this[1] * x];
+  };
+
   vMath.div = function (vec1, x) {
     if (x === 0) return vec1;
     return [vec1[0] / x, vec1[1] / x];
+  };
+
+  Array.prototype.over = function (x) {
+    if (x === 0) return this;
+    return [this[0] / x, this[1] / x];
   };
 
   vMath.rand = function (length) {

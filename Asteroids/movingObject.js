@@ -41,6 +41,26 @@
     this.pos = [posX, posY];
   };
 
+  MovingObject.prototype.approach = function (obj, str) {
+    var impulse = [0, 0];
+    var targetPos = obj.pos;
+
+    if (this.pos[0] > targetPos[0]) { impulse[0] = -str; } else { impulse[0] = str; }
+    if (this.pos[1] > targetPos[1]) { impulse[1] = -str; } else { impulse[1] = str; }
+
+    return impulse;
+  };
+
+  MovingObject.prototype.avoid = function (obj, str) {
+    var impulse = [0, 0];
+    var targetPos = obj.pos;
+
+    if (this.pos[0] < targetPos[0]) { impulse[0] = -str; } else { impulse[0] = str; }
+    if (this.pos[1] < targetPos[1]) { impulse[1] = -str; } else { impulse[1] = str; }
+
+    return impulse;
+  };
+
   MovingObject.prototype.isCollidedWith = function (otherObject) {
     var distObjs = Asteroids.Util.dist(this.pos, otherObject.pos);
 

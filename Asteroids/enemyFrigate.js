@@ -45,7 +45,17 @@
 
   Frigate.prototype.reactTo = function (obj) {
     if (this.radius <= obj.radius) {
-      console.log("Ahhhh a big " + obj.type + "!");
+
+      switch (obj.type) {
+        case "asteroid":
+          this.vel = vMath.add(this.vel, this.avoid(obj, 0.2));
+          break;
+        case "frigate":
+          this.vel = vMath.add(this.vel, this.avoid(obj, 0.2));
+          break;
+        default:
+          console.log("Ahhhh a big " + obj.type + "!");
+      }
     }
   };
 
