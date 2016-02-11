@@ -31,15 +31,32 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
   };
 
   Game.prototype.start = function () {
-    this.addText({text: "Gauntlet Run", size: 60, pos: [200, 200] });
+    this.addText({text: "Gauntlet Run", size: 60, color: "#ffaa00", pos: [200, 200] });
     this.addText({
-      text: "Use arrow keys to move, hold space to fire",
-      pos: [200, 250],
+      text: "Use arrow keys to move",
+      size: 40,
+      color: '#ffaa00',
+      pos: [100, 250],
     });
     this.addText({
-      text: "Press P to pause and O to begin!",
-      pos: [200, 300],
+      text: "Hold space to fire",
+      size: 40,
+      color: '#ffaa00',
+      pos: [100, 300],
     });
+    this.addText({
+      text: "Don't crash into the asteroids!",
+      size: 40,
+      color: '#ffaa00',
+      pos: [100, 350],
+    });
+    this.addText({
+      text: "Press P to pause and O to start",
+      size: 40,
+      color: '#ffaa00',
+      pos: [100, 400],
+    });
+
     this.reset();
   };
 
@@ -163,13 +180,21 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
   Game.prototype.remove = function (object) {
     if (object.type === "ship" && this.score !== 0) { // && Game isn't already over
       this.addText({
-        text: "GAME OVER, score: " + this.score,
+        text: "GAME OVER",
         pos: [this.dim_x / 2, this.dim_y / 2],
         size: 60,
-        timeout: 200,
+        color: '#ffaa00',
         textAlign: "center",
         drift: [0, 0],
         game: this
+      });
+      this.addText({
+        text: "Score: " + this.score,
+        pos: [this.dim_x / 2, this.dim_y / 2 + 50],
+        color: '#ffaa00',
+        textAlign: "center",
+        size: 40,
+        game: this,
       });
       this.score = 0;
       this.pause = true;
