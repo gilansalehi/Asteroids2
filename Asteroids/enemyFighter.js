@@ -4,6 +4,8 @@
   }
 
   var Fighter = Asteroids.Fighter = function (attrs) {
+    this.img = new Image ();
+    this.img.src = './assets/alien3.png';
     this.type = "fighter";
     this.team = "enemy";
     this.points = 10;
@@ -92,5 +94,10 @@
     this.cooldown -= 1;
     this.pos = [posX, posY];
   };
+
+  Fighter.prototype.draw = function () {
+    ctx.drawImage(this.img, this.pos[0] - 20, this.pos[1] - 20, 40, 40);
+  };
+
 
 })();

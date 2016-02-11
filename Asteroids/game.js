@@ -172,7 +172,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         game: this
       });
       this.score = 0;
-      this.pause();
+      this.pause = true;
       this.reset();
     } else if (object.team === "enemy") {
       this.addFX({
