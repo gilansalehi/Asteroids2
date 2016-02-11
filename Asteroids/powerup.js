@@ -40,6 +40,12 @@
     switch (this.type) {
       case "health":
         this.game.ship.hp += 100;
+        this.game.addText({
+          text: "+100",
+          color: "33ff33",
+          pos: this.pos,
+          drift: [0.1, -0.1]
+        });
         break;
       default:
         this.game.score += 25;
