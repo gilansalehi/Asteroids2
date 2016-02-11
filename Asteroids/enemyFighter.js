@@ -15,6 +15,7 @@
     this.cooldown = 0;
     this.hp = 15;
     this.dmg = 100;
+    this.viewDist = 70;
   };
 
   Asteroids.Util.inherits(Fighter, Asteroids.MovingObject);
@@ -39,6 +40,22 @@
     if (this.vel[0] < - speedlimit) { this.vel[0] = -speedlimit; }
     if (this.vel[1] > speedlimit) { this.vel[1] = speedlimit; }
     if (this.vel[1] < - speedlimit) { this.vel[1] = -speedlimit; }
+  };
+
+  Fighter.prototype.reactTo = function (obj) {
+    if (this.radius <= obj.radius) {
+
+      switch (obj.type) {
+        case "asteroid":
+          this.vel = vMath.add(this.vel, this.avoid(obj, 0.2));
+          break;
+        case "frigate":
+          this.vel = vMath.add(this.vel, this.avoid(obj, 0.2));
+          break;
+        default:
+          console.log("Ahhhh a big " + obj.type + "!");
+      }
+    }
   };
 
   Fighter.prototype.fireBullet = function () {
