@@ -4,7 +4,8 @@
   }
 
   var Ship = Asteroids.Ship = function (attrs) {
-    this.imgUrl = "";
+    this.img = new Image ();
+    this.img.src = './assets/spaceship.png';
     this.type = "ship";
     this.pos = attrs.pos;
     this.vel = [0, 0];
@@ -12,6 +13,7 @@
     this.color = "#a1e5dd";
     this.game = attrs.game;
     this.cooldown = 0;
+    this.jetsCooldown = 4;
     this.hp = 100;
     this.dmg = 0;
   };
@@ -35,12 +37,23 @@
       this.cooldown = 10;
       console.log(this.hp);
       var bulletPos = [this.pos[0], this.pos[1] - 25];
-      var bullet = new Asteroids.Bullet({pos: bulletPos, game: this.game});
+      var bullet = new Asteroids.Bullet({ pos: bulletPos, game: this.game });
       this.game.movingObjects.push(bullet);
     }
   };
 
+  Ship.prototype.drawJets = function () {
+    if (this.jetsCooldown < 0) {
+      this.jetsCooldown = 1;
+      var jetsPos = [this.pos[0], this.pos[1] + 25];
+      var jet = new Asteroids.JetTrail({ pos: jetsPos, game: this.game });
+      this.game.visualFX.push(jet);
+    }
+  };
+
   Ship.prototype.move = function () {
+    this.drawJets();
+
     var origX = this.pos[0];
     var origY = this.pos[1];
 
@@ -51,7 +64,12 @@
     var posY = origY + dy;
 
     this.cooldown -= 1;
+    this.jetsCooldown -=1;
     this.pos = this.game.bounds([posX, posY]);
+  };
+
+  Ship.prototype.draw = function () {
+    ctx.drawImage(this.img, this.pos[0] - 20, this.pos[1] - 20, 40, 40);
   };
 
 })();

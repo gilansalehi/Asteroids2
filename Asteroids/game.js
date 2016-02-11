@@ -21,6 +21,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
 
     this.textObjects = [];
     this.movingObjects = [];
+    this.visualFX = [];
 
     this.spawnCounter = 0;
     this.score = 0;
@@ -48,6 +49,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     for (var i = 0; i < NUM_ASTEROIDS; i++) {
       this.movingObjects.push(this.addAsteroids());
     }
+    this.ship.hp = 100;
     this.pause = true;
   };
 
@@ -69,6 +71,12 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     this.textObjects.push(text);
   };
 
+  Game.prototype.addFX = function (attrs) {
+    attrs.game = this;
+    var effect = new Asteroids.Explosion (attrs);
+    this.visualFX.push(effect);
+  };
+
   Game.prototype.allObjects = function () {
     return this.movingObjects.concat(this.ship);
   };
@@ -82,6 +90,9 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     });
     this.textObjects.forEach(function (text) {
       text.draw(ctx);
+    });
+    this.visualFX.forEach(function (effect) {
+      effect.draw(ctx);
     });
   };
 
@@ -149,10 +160,6 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     }
   };
 
-  Game.prototype.togglePause = function () {
-    this.pause = !this.pause;
-  };
-
   Game.prototype.remove = function (object) {
     if (object.type === "ship" && this.score !== 0) { // && Game isn't already over
       this.addText({
@@ -166,6 +173,10 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       });
       this.score = 0;
       this.reset();
+    } else if (object.team === "enemy") {
+      this.addFX({
+        pos: object.pos,
+      });
     }
     // use splice to delete elements at index i...
     var i = this.movingObjects.indexOf(object);
@@ -175,6 +186,11 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
   Game.prototype.removeText = function (object) {
     var i = this.textObjects.indexOf(object);
     return this.textObjects.splice(i, 1);
+  };
+
+  Game.prototype.removeFX = function (object) {
+    var i = this.visualFX.indexOf(object);
+    return this.visualFX.splice(i, 1);
   };
 
   Game.prototype.destroy = function (object) {
