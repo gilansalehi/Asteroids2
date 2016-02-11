@@ -6,11 +6,11 @@
   var JetTrail = Asteroids.JetTrail = function (attr) {
     this.type = "explosion";
     this.pos = attr.pos;
-    this.vel = [0, 2];
-    this.radius = 4;
-    this.color = "#ff9900";
+    this.vel = attr.vel || [0, 2];
+    this.radius = attr.radius || 4;
+    this.color = attr.color || "#ff9900";
     this.game = attr.game;
-    this.cooldown = 15;
+    this.cooldown = attr.cooldown || 15;
   };
 
   JetTrail.prototype.draw = function () {

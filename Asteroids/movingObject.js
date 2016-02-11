@@ -94,6 +94,9 @@
           drift: [0.1, -0.1]
         });
       }
+      if (this.type === "ship" || otherObject.type === "ship") {
+        this.game.ship.drawShield();
+      }
     }
   };
 

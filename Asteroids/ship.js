@@ -46,9 +46,26 @@
     if (this.jetsCooldown < 0) {
       this.jetsCooldown = 1;
       var jetsPos = [this.pos[0], this.pos[1] + 25];
-      var jet = new Asteroids.JetTrail({ pos: jetsPos, game: this.game });
+      var jet = new Asteroids.JetTrail({
+        pos: jetsPos,
+        color: this.color,
+        game: this.game
+      });
       this.game.visualFX.push(jet);
     }
+  };
+
+  Ship.prototype.drawShield = function () {
+    console.log("drew shield");
+    var shieldPos = this.pos;
+    var shield = new Asteroids.JetTrail({
+      pos: this.pos,
+      color: this.color,
+      radius: this.radius,
+      cooldown: 20,
+      game: this.game,
+    });
+    this.game.visualFX.push(shield);
   };
 
   Ship.prototype.move = function () {
