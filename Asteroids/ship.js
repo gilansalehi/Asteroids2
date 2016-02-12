@@ -15,7 +15,7 @@
     this.cooldown = 0;
     this.jetsCooldown = 4;
     this.hp = 100;
-    this.dmg = 0;
+    this.dmg = 10;
   };
 
   Asteroids.Util.inherits(Ship, Asteroids.MovingObject);

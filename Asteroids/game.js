@@ -224,15 +224,15 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     return this.movingObjects.splice(i, 1);
   };
 
-  Game.prototype.setHighScore = function () {
-    if (window.localStore.hs) {
-      if (parseInt(window.localStorage.hs) < this.score) {
-        window.localStorage.setItem('hs', this.score);
-      }
-    } else {
-      window.localStore.hs = this.hs;
-    }
-  };
+  // Game.prototype.setHighScore = function () {
+  //   if (window.localStore.hs) {
+  //     if (parseInt(window.localStorage.hs) < this.score) {
+  //       window.localStorage.setItem('hs', this.score);
+  //     }
+  //   } else {
+  //     window.localStore.hs = this.hs;
+  //   }
+  // };
 
   Game.prototype.removeText = function (object) {
     var i = this.textObjects.indexOf(object);
@@ -267,7 +267,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     }
     if (this.asteroidCounter < 0) {
       this.movingObjects.push(this.addAsteroids());
-      this.asteroidCounter = 67;
+      this.asteroidCounter = 97;
     }
   };
 
@@ -289,7 +289,8 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         this.movingObjects.push(fighter);
         break;
       case "powerup":
-        var randType = shuffle(["health", "dmg", "points"])[0];
+        var randIdx = Math.floor(Math.random() * 3);
+        var randType = (["health", "dmg", "points"])[randIdx];
         var powerup = new Asteroids.PowerUp({
           pos: this.randPosition(),
           type: randType,

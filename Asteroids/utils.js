@@ -38,17 +38,17 @@
   };
 
   Util.spawnRand = function (level) {
-    var rand = Math.random() * 100 + level / 10;
+    var rand = Math.random() * 100 + level / 100;
     switch (true) {
-      case (rand < 30):
+      case (rand < 10):
         return "asteroid";
-      case (rand < 90):
+      case (rand < 60):
         return "fighter";
-      case (rand < 95):
+      case (rand < 65):
         return "powerup";
-      case (rand < 105):
+      case (rand < 101):
         return "frigate";
-      case (rand < 125):
+      case (rand < 105):
         return "fasteroid";
       case (rand < 500):
         return "frigate";
