@@ -56,6 +56,12 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       color: '#ffaa00',
       pos: [100, 400],
     });
+    this.addText({
+      text: "Download this game for free from https://github.com/gilansalehi/Asteroids2",
+      size: 15,
+      color: '#ffaa00',
+      pos: [100, 440],
+    });
 
     this.reset();
   };
