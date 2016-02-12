@@ -6,7 +6,7 @@
 
   var Asteroid = Asteroids.Asteroid = function (attr) {
     this.img = new Image ();
-    this.img.src = 'Asteroid/assets/asteroid.png';
+    this.img.src = 'Asteroids/assets/asteroid.png';
     this.type = "asteroid";
     this.team = "neutral";
     this.pos = attr.pos;

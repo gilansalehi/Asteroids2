@@ -5,7 +5,7 @@
 
   var Fighter = Asteroids.Fighter = function (attrs) {
     this.img = new Image ();
-    this.img.src = 'Asteroid/assets/alien3.png';
+    this.img.src = 'Asteroids/assets/alien3.png';
     this.type = "fighter";
     this.team = "enemy";
     this.points = 10;
