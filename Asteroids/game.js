@@ -267,7 +267,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     }
     if (this.asteroidCounter < 0) {
       this.movingObjects.push(this.addAsteroids());
-      this.asteroidCounter = 97;
+      this.asteroidCounter = 137;
     }
   };
 
@@ -301,7 +301,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       case "fasteroid":
         var fasteroid = new Asteroids.Asteroid({
           pos: this.randPosition(),
-          vel: vMath.add([0, 3], vMath.rand(1)),
+          vel: vMath.add([0, 2], vMath.rand(1)),
           game: this,
         });
         this.movingObjects.push(fasteroid);
