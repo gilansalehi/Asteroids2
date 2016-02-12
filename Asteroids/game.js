@@ -195,8 +195,9 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         textAlign: "center",
         game: this
       });
+      // if (this.hs) { this.hs = false; this.setHighScore(); }
       this.addText({
-        text: "Score: " + this.score, // + "  High Score: " + window.localStorage.hs
+        text: "Score: " + this.score, // + "  High Score: " + window.localStorage.hs,
         pos: [this.dim_x / 2, this.dim_y / 2 + 50],
         color: '#ffaa00',
         textAlign: "center",
@@ -211,7 +212,6 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         size: 30,
         game: this,
       });
-      // if (this.hs) { this.hs = false; this.setHighScore(); }
       this.pause = true;
       this.reset();
     } else if (object.team === "enemy") {
@@ -226,7 +226,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
 
   Game.prototype.setHighScore = function () {
     if (window.localStore.hs) {
-      if (window.localStorage.hs < this.score) {
+      if (parseInt(window.localStorage.hs) < this.score) {
         window.localStorage.setItem('hs', this.score);
       }
     } else {
