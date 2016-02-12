@@ -60,7 +60,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       text: "Download this game for free from https://github.com/gilansalehi/Asteroids2",
       size: 15,
       color: '#ffaa00',
-      pos: [100, 440],
+      pos: [120, 440],
     });
 
     this.reset();
