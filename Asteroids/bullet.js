@@ -12,7 +12,7 @@
     this.color = "#00ff00";
     this.game = attr.game;
     this.hp = 1;
-    this.dmg = 10;
+    this.dmg = attr.dmg || 10;
   };
 
   Asteroids.Util.inherits(Bullet, Asteroids.MovingObject);

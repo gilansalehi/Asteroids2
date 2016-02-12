@@ -42,7 +42,16 @@
         this.game.ship.hp += 100;
         this.game.addText({
           text: "+100",
-          color: "33ff33",
+          color: "#33ff33",
+          pos: this.pos,
+          drift: [0.1, -0.1]
+        });
+        break;
+      case "dmg":
+        this.game.ship.dmg += 2;
+        this.game.addText({
+          text: "level up!",
+          color: "#00aaaa",
           pos: this.pos,
           drift: [0.1, -0.1]
         });

@@ -37,7 +37,7 @@
       this.cooldown = 10;
       console.log(this.hp);
       var bulletPos = [this.pos[0], this.pos[1] - 25];
-      var bullet = new Asteroids.Bullet({ pos: bulletPos, game: this.game });
+      var bullet = new Asteroids.Bullet({ pos: bulletPos, dmg: this.dmg, game: this.game });
       this.game.movingObjects.push(bullet);
     }
   };
@@ -53,19 +53,6 @@
       });
       this.game.visualFX.push(jet);
     }
-  };
-
-  Ship.prototype.drawShield = function () {
-    console.log("drew shield");
-    var shieldPos = this.pos;
-    var shield = new Asteroids.JetTrail({
-      pos: this.pos,
-      color: this.color,
-      radius: this.radius,
-      cooldown: 20,
-      game: this.game,
-    });
-    this.game.visualFX.push(shield);
   };
 
   Ship.prototype.move = function () {

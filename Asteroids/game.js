@@ -289,7 +289,12 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         this.movingObjects.push(fighter);
         break;
       case "powerup":
-        var powerup = new Asteroids.PowerUp({pos: this.randPosition(), game: this});
+        var randType = shuffle(["health", "dmg", "points"])[0];
+        var powerup = new Asteroids.PowerUp({
+          pos: this.randPosition(),
+          type: randType,
+          game: this
+        });
         this.movingObjects.push(powerup);
         break;
       case "fasteroid":
