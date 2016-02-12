@@ -5,7 +5,7 @@
 
   var Frigate = Asteroids.Frigate = function (attrs) {
     this.img = new Image ();
-    this.img.src = './assets/alien1.png';
+    this.img.src = 'Asteroid/assets/alien1.png';
     this.type = "frigate";
     this.team = "enemy";
     this.points = 100;
