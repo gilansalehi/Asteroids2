@@ -41,10 +41,10 @@
       case "health":
         this.game.ship.hp += 100;
         this.game.addText({
-          text: "+100",
+          text: "+100 HP",
           color: "33ff33",
           pos: this.pos,
-          drift: [0.1, -0.1]
+          drift: [0, -2]
         });
         break;
       case "dmg":
@@ -53,7 +53,7 @@
           text: "level up!",
           color: "0033aa",
           pos: this.pos,
-          drift: [0.1, -0.1]
+          drift: [0, -2]
         });
         break;
       default:

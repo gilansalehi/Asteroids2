@@ -23,7 +23,7 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     this.movingObjects = [];
     this.visualFX = [];
 
-    this.spawnCounter = 0;
+    this.spawnCounter = 50;
     this.asteroidCounter = 0;
     this.score = 0;
     this.pause = false;
