@@ -24,8 +24,10 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     this.visualFX = [];
 
     this.spawnCounter = 0;
+    this.asteroidCounter = 0;
     this.score = 0;
     this.pause = false;
+    this.hs = true;
 
     this.start();
   };
@@ -191,18 +193,25 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
         size: 60,
         color: '#ffaa00',
         textAlign: "center",
-        drift: [0, 0],
         game: this
       });
       this.addText({
-        text: "Score: " + this.score,
+        text: "Score: " + this.score, // + "  High Score: " + window.localStorage.hs
         pos: [this.dim_x / 2, this.dim_y / 2 + 50],
         color: '#ffaa00',
         textAlign: "center",
         size: 40,
         game: this,
       });
-      this.score = 0;
+      this.addText({
+        text: "Press O to keep playing or ctrl R to reset",
+        pos: [this.dim_x / 2, this.dim_y / 2 + 100],
+        color: '#ffaa00',
+        textAlign: "center",
+        size: 30,
+        game: this,
+      });
+      // if (this.hs) { this.hs = false; this.setHighScore(); }
       this.pause = true;
       this.reset();
     } else if (object.team === "enemy") {
@@ -213,6 +222,16 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     // use splice to delete elements at index i...
     var i = this.movingObjects.indexOf(object);
     return this.movingObjects.splice(i, 1);
+  };
+
+  Game.prototype.setHighScore = function () {
+    if (window.localStore.hs) {
+      if (window.localStorage.hs < this.score) {
+        window.localStorage.setItem('hs', this.score);
+      }
+    } else {
+      window.localStore.hs = this.hs;
+    }
   };
 
   Game.prototype.removeText = function (object) {
@@ -241,9 +260,14 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
 
   Game.prototype.spawnObjects = function () {
     this.spawnCounter -= 1;
+    this.asteroidCounter -= 1;
     if (this.spawnCounter < 0) {
       this.spawn();
-      this.spawnCounter = 50;
+      this.spawnCounter = 53;
+    }
+    if (this.asteroidCounter < 0) {
+      this.movingObjects.push(this.addAsteroids());
+      this.asteroidCounter = 67;
     }
   };
 
@@ -267,6 +291,14 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
       case "powerup":
         var powerup = new Asteroids.PowerUp({pos: this.randPosition(), game: this});
         this.movingObjects.push(powerup);
+        break;
+      case "fasteroid":
+        var fasteroid = new Asteroids.Asteroid({
+          pos: this.randPosition(),
+          vel: vMath.add([0, 3], vMath.rand(1)),
+          game: this,
+        });
+        this.movingObjects.push(fasteroid);
         break;
       case "frigate":
         var frigate = new Asteroids.Frigate({pos: this.randPosition(), game: this});

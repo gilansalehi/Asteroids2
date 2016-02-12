@@ -40,12 +40,16 @@
   Util.spawnRand = function (level) {
     var rand = Math.random() * 100 + level / 10;
     switch (true) {
-      case (rand < 65):
+      case (rand < 30):
         return "asteroid";
-      case (rand < 110):
+      case (rand < 90):
         return "fighter";
-      case (rand < 125):
+      case (rand < 95):
         return "powerup";
+      case (rand < 105):
+        return "frigate";
+      case (rand < 125):
+        return "fasteroid";
       case (rand < 500):
         return "frigate";
       default:
