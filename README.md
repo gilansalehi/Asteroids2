@@ -1,7 +1,7 @@
 Welcome to the Gauntlet Run!
 --a game by Gilan Salehi --
 
-![./assets/GauntletRun.PNG]()
+![alt tag](Asteroids/assets/GauntletRun.PNG)
 
 Race through the asteroid field destroying enemy scouts and cruisers and picking up powerups!  Defeat a horde of enemies and face down the final challenge: the Gauntlet itself.
 
