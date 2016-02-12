@@ -8,7 +8,7 @@
     this.pos = [5, 595];
     this.size = 20;
     this.text = attrs.text || "";
-    this.color = attrs.color || "#ff0000";
+    this.color = attrs.color || "#ffaa00";
     this.font = attrs.font || ("bold " + this.size + "px sans-serif");
     this.age = 0;
     this.timeout = null;
