@@ -5,7 +5,7 @@
 
   var Ship = Asteroids.Ship = function (attrs) {
     this.img = new Image ();
-    this.img.src = './assets/spaceship2.png';
+    this.img.src = 'assets/spaceship2.png';
     this.type = "ship";
     this.pos = attrs.pos;
     this.vel = [0, 0];
