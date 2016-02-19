@@ -3,8 +3,9 @@
     window.Asteroids = {};
   }
 
-  var GameView = Asteroids.GameView = function (game, ctx) {
+  var GameView = Asteroids.GameView = function (game, dims, ctx) {
     this.game = game;
+    this.dims = dims;
     this.ctx = ctx;
   };
 

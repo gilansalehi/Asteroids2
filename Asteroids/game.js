@@ -10,8 +10,8 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     window.Asteroids = {};
   }
 
-  var DIM_X = 800;
-  var DIM_Y = 600;
+  var DIM_X = window.innerWidth;
+  var DIM_Y = window.innerHeight;
   var NUM_ASTEROIDS = 4;
 
   var Game = Asteroids.Game = function () {
@@ -32,37 +32,49 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     this.start();
   };
 
+  Game.dim_x = function () {
+    return window.innerWidth;
+  };
+
+  Game.dim_y = function () {
+    return window.innerHeight;
+  };
+
   Game.prototype.start = function () {
-    this.addText({text: "Gauntlet Run", size: 60, color: "#ffaa00", pos: [200, 200] });
+    this.addText({
+      text: "Gauntlet Run",
+      size: 60,
+      color: "#ffaa00",
+      pos: [this.dim_x / 2 - 200, this.dim_y / 2 - 150] });
     this.addText({
       text: "Use arrow keys to move",
       size: 40,
       color: '#ffaa00',
-      pos: [100, 250],
+      pos: [this.dim_x / 2 - 250, this.dim_y / 2 - 100],
     });
     this.addText({
       text: "Hold space to fire",
       size: 40,
       color: '#ffaa00',
-      pos: [100, 300],
+      pos: [this.dim_x / 2  - 250, this.dim_y / 2 - 50],
     });
     this.addText({
       text: "Don't crash into the asteroids!",
       size: 40,
       color: '#ffaa00',
-      pos: [100, 350],
+      pos: [this.dim_x / 2  - 250, this.dim_y / 2],
     });
     this.addText({
       text: "Press P to pause and O to start",
       size: 40,
       color: '#ffaa00',
-      pos: [100, 400],
+      pos: [this.dim_x / 2 - 250, this.dim_y / 2 + 50],
     });
     this.addText({
       text: "Download this game for free from https://github.com/gilansalehi/Asteroids2",
       size: 15,
       color: '#ffaa00',
-      pos: [120, 440],
+      pos: [this.dim_x / 2 - 250, this.dim_y / 2 + 100],
     });
 
     this.reset();
@@ -137,6 +149,10 @@ Keeps track of dimensions of the space; wraps objects around when they drift off
     this.movingObjects.forEach(function (object) {
       if (Asteroids.Util.offScreen(object)) { this.remove(object); }
     }.bind(this));
+  };
+
+  Game.prototype.getBounds = function () {
+    return [DIM_X, DIM_Y];
   };
 
   Game.prototype.bounds = function (pos) {

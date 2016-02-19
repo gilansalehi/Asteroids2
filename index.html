@@ -8,14 +8,17 @@
         margin: 0px;
       }
       canvas {
+        margin: auto;
+        display: block;
         background-color: black;
         background-image: url(http://www.mbuh.xyz/p/real-space-wallpaper-background-od0v.jpg);
+        background-size: cover;
       }
     </style>
   </head>
 
   <body>
-    <canvas id="game-canvas" width="800" height="600"></canvas>
+    <canvas id="game-canvas"></canvas>
 
     <script src="Asteroids/keymaster-master/keymaster.js"></script>
     <script src="Asteroids/vMath.js"></script>
@@ -38,9 +41,13 @@
     <script>
       var game = new Asteroids.Game();
       var canvasEl = document.getElementById("game-canvas");
+      canvasEl.width = window.innerWidth;
+      canvasEl.height = window.innerHeight;
+      var dims = {DIM_X: canvasEl.width, DIM_Y: canvasEl.height};
       var ctx = canvasEl.getContext("2d");
       new Asteroids.GameView(
         game,
+        dims,
         ctx
       ).start(canvasEl);
     </script>

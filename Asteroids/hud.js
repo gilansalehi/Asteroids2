@@ -5,7 +5,7 @@
   }
 
   var HUD = Asteroids.HUD = function (attrs) {
-    this.pos = [5, 595];
+    this.pos = attrs.pos || [5, 595];
     this.size = 20;
     this.text = attrs.text || "";
     this.color = attrs.color || "#ffaa00";

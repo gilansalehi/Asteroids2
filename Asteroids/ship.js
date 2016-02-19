@@ -39,6 +39,7 @@
       var bulletPos = [this.pos[0], this.pos[1] - 25];
       var bullet = new Asteroids.Bullet({ pos: bulletPos, dmg: this.dmg, game: this.game });
       this.game.movingObjects.push(bullet);
+      console.log(this.game.movingObjects.length);
     }
   };
 
