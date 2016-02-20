@@ -35,7 +35,7 @@
   Ship.prototype.fireBullet = function () {
     if (this.cooldown < 0) {
       this.cooldown = 10;
-      console.log(this.hp);
+
       var bulletPos = [this.pos[0], this.pos[1] - 25];
       var bullet = new Asteroids.Bullet({ pos: bulletPos, dmg: this.dmg, game: this.game });
       this.game.movingObjects.push(bullet);

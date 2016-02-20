@@ -62,6 +62,12 @@
   };
 
   MovingObject.prototype.isCollidedWith = function (otherObject) {
+    //dont calculate if they're far apart to optimize
+    if (Math.abs(this.pos[0] - otherObject.pos[0] > 120 || Math.abs(this.pos[1] - otherObject.pos[1] > 120))) {
+      return false;
+    }
+
+    // if theyre near, get the exact distance.
     var distObjs = Asteroids.Util.dist(this.pos, otherObject.pos);
 
     return distObjs < (this.radius + otherObject.radius);
