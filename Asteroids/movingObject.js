@@ -62,8 +62,8 @@
   };
 
   MovingObject.prototype.isCollidedWith = function (otherObject) {
-    //dont calculate if they're far apart to optimize
-    if (Math.abs(this.pos[0] - otherObject.pos[0] > 120 || Math.abs(this.pos[1] - otherObject.pos[1] > 120))) {
+    //dont calculate if they're far apart to optimize (nothing has radius > 80?)
+    if (Math.abs(this.pos[0] - otherObject.pos[0] > 160 || Math.abs(this.pos[1] - otherObject.pos[1] > 180))) {
       return false;
     }
 

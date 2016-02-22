@@ -24,15 +24,15 @@
   Util.inBounds = function (pos) {
     if (pos[0] < 0) { return false; }
     if (pos[1] < 0) { return false; }
-    if (pos[0] > Asteroids.Game.dim_x) { return false; }
-    if (pos[1] > Asteroids.Game.dim_y) { return false; }
+    if (pos[0] > Asteroids.Game.dim_x()) { return false; }
+    if (pos[1] > Asteroids.Game.dim_y()) { return false; }
     return true;
   };
 
   Util.offScreen = function (obj) {
-    if (obj.pos[0] < 0 || obj.pos[0] > Asteroids.Game.dim_x) // Asteroids.Game.DIM_X)
+    if (obj.pos[0] < 0 || obj.pos[0] > Asteroids.Game.dim_x()) // Asteroids.Game.DIM_X)
       { return true; }
-    if (obj.pos[1] < 0 || obj.pos[1] > Asteroids.Game.dim_y + 100) // Asteroids.Game.DIM_Y)
+    if (obj.pos[1] < 0 || obj.pos[1] > Asteroids.Game.dim_y() + 100) // Asteroids.Game.DIM_Y)
       { return true; }
     return false;
   };
