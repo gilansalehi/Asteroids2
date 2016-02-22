@@ -21,3 +21,7 @@ Coming Soon:
 more complex enemies!
 missiles and bombs!
 leveling up!
+
+[linkedin]: www.linkedin.com/in/gilansalehi
+[profile]: www.gilansalehi.com
+[play now]: www.gilansalehi.com/Asteroids2
