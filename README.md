@@ -1,3 +1,5 @@
+#Gauntlet Run
+
 Welcome to the Gauntlet Run!
 
 --a game by Gilan Salehi --
