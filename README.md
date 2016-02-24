@@ -22,6 +22,6 @@ more complex enemies!
 missiles and bombs!
 leveling up!  
 
-[LinkedIn](www.linkedin.com/in/gilansalehi) ||
-[My Site](www.gilansalehi.com) ||
-[Play Now!](www.gilansalehi.com/Asteroids2)
+[LinkedIn](http://www.linkedin.com/in/gilansalehi) ||
+[My Site](http://www.gilansalehi.com) ||
+[Play Now!](http://www.gilansalehi.com/Asteroids2)
