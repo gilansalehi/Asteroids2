@@ -22,7 +22,7 @@ This project uses Canvas and Javascript.
 Coming Soon:
 more complex enemies!
 missiles and bombs!
-leveling up!
+leveling up!  
 
 [linkedin]: www.linkedin.com/in/gilansalehi
 [profile]: www.gilansalehi.com
