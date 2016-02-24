@@ -6,7 +6,7 @@ Welcome to the Gauntlet Run!
 
 [GauntletRun]: www.gilansalehi.com/Asteroids2
 
-![GauntletRun](Asteroids/assets/GauntletRun.PNG)
+[![GauntletRun](Asteroids/assets/GauntletRun.PNG)]: www.gilansalehi.com/Asteroids2
 
 Race through the asteroid field destroying enemy scouts and cruisers and picking up powerups!  Defeat a horde of enemies and face down the final challenge: the Gauntlet itself.
 
